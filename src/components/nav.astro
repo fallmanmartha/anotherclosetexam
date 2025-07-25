@@ -1,0 +1,108 @@
+---
+
+---
+
+<nav>
+  <div class="nav">
+    <h1>Another Closet</h1>
+    <button class="burger" id="burgerBtn">&#9776;</button>
+
+    <div class="nav-menu" id="menu">
+      <ul>
+        <li><a>Om os</a></li>
+        <li><a>Faq</a></li>
+        <li><a>Garderoben</a></li>
+        <li><a>Bliv medlem</a></li>
+        <li><a>Log ind</a></li>
+      </ul>
+      <img src="/src/assets/anotherlogo.svg" alt="Logo" class="logoimg" />
+    </div>
+  </div>
+
+  <script type="module" src="/burgermenu.js"></script>
+</nav>
+
+<style>
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .burger {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu ul {
+    list-style: none;
+    padding-top: 30px;
+    margin-left: -25px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .nav-menu a {
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-style: normal;
+    cursor: pointer;
+  }
+
+  .nav-menu a:hover {
+    text-decoration: underline;
+  }
+
+  .logoimg {
+    width: 100px;
+  }
+
+  /* ----------- COMPUTER ----------- */
+
+  @media (min-width: 768px) {
+    .burger {
+      display: none;
+    }
+
+    .nav {
+      flex-wrap: nowrap;
+    }
+
+    .nav-menu {
+      display: flex !important;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      width: auto;
+      gap: 2rem;
+    }
+
+    .nav-menu ul {
+      flex-direction: row;
+      gap: 2rem;
+      padding: 0;
+    }
+
+    .logoimg {
+      display: none;
+    }
+  }
+</style>
