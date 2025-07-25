@@ -1,13 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Secondaryhero from "../components/secondaryhero.astro";
+import Locationinfo from "../components/locationinfo.astro";
 import "./css/general.css";
 ---
 
-<header>
-  <Layout />
-</header>
 <body>
-  <Secondaryhero title="Nørrebro" />
+  <header>
+    <Layout />
+    <Secondaryhero title="Nørrebro" />
+  </header>
+  <main>
+    <Locationinfo />
+  </main>
+  <footer></footer>
 </body>
-<footer></footer>

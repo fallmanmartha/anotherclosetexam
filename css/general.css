@@ -21,11 +21,21 @@ p {
   font-weight: regular;
   font-size: 17px;
 }
-main {
+body {
   max-width: 1512px;
   margin: 0 auto;
 }
 
 img {
   max-width: 100%;
+}
+
+@media (min-width: 768px) {
+}
+h2 {
+  font-size: 50px;
+}
+main {
+  max-width: 1000;
+  margin-left: 8vw;
 }
