@@ -1,0 +1,72 @@
+---
+const { question, text } = Astro.props;
+---
+
+<div class="faq">
+  <section class="dropdown">
+    <details class="dropdownline">
+      <summary class="dropdowntitle">
+        {question}
+        <span class="plus">+</span>
+      </summary>
+      <p>{text}</p>
+    </details>
+  </section>
+</div>
+<style>
+  :root {
+    --color-primary: #0c3226;
+    --font-primary: Arial, sans-serif;
+    --font-secondary: Arial, sans-serif;
+  }
+
+  .faq {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .dropdowntitle {
+    color: var(--color-primary);
+    font-family: var(--font-primary);
+    font-style: italic;
+    font-weight: 100;
+    letter-spacing: -0.05em;
+    font-size: 25px;
+  }
+
+  .dropdown {
+    max-width: 65ch;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .dropdownline {
+    border-bottom: 2px solid var(--color-primary);
+    padding: 0px 0;
+  }
+
+  .dropdowntitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    max-width: 65ch;
+  }
+
+  .plus {
+    font-size: 3rem;
+    font-weight: 100;
+    transition: transform 0.3s ease;
+  }
+
+  details[open] .plus {
+    transform: rotate(45deg);
+  }
+
+  .accordion-plus p {
+    padding: 10px 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+  }
+</style>
