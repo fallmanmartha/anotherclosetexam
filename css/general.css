@@ -21,3 +21,7 @@ main {
   max-width: 1512px;
   margin: 0 auto;
 }
+
+img {
+  max-width: 100%;
+}
