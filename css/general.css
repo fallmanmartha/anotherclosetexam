@@ -1,7 +1,6 @@
 :root {
   --color-primary: #0c3226;
   --font-primary: Arial, sans-serif;
-  --font-secondary: Arial, sans-serif;
 }
 
 h1,
@@ -17,6 +16,11 @@ a {
   letter-spacing: -0.05em;
 }
 
+p {
+  font-family: var(--font-primary);
+  font-weight: regular;
+  font-size: 17px;
+}
 main {
   max-width: 1512px;
   margin: 0 auto;
