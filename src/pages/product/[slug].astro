@@ -36,6 +36,7 @@ export async function getStaticPaths() {
 
 const { myData }: { myData: Product } = Astro.props;
 import Layout from "../../layouts/Layout.astro";
+import Banner from "../../components/banner.astro";
 ---
 
 <Layout>
@@ -63,6 +64,8 @@ import Layout from "../../layouts/Layout.astro";
       </div>
     </div>
   </section>
+
+  <Banner />
 </Layout>
 
 <style>
@@ -99,7 +102,7 @@ import Layout from "../../layouts/Layout.astro";
     border-radius: 3px;
     margin-bottom: 1.5rem;
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: 0px;
     font-style: normal;
   }
 
