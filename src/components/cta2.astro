@@ -1,0 +1,30 @@
+---
+import "./css/general.css";
+const { text } = Astro.props;
+---
+
+<a href="/location" class="cta">{text}</a>
+
+<style>
+  .cta {
+    display: inline-block;
+    width: 250px;
+    text-align: center;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    padding: 1.2rem 0rem;
+    font-size: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin: 20px 20px 0 0px;
+    font-style: normal;
+  }
+
+  .cta:hover {
+    background-color: #08362a; /* mörkgrön */
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+</style>

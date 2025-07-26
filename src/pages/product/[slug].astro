@@ -41,7 +41,7 @@ import Banner from "../../components/banner.astro";
 
 <Layout>
   <section>
-    <div class="product-grid">
+    <div class="grid_1-1">
       <!-- Bildsida -->
       <div>
         <a href="/location" class="backlink">←</a>
@@ -117,15 +117,8 @@ import Banner from "../../components/banner.astro";
     margin-top: -13px;
   }
 
-  .product-grid {
-    grid-template-columns: 1fr;
-  }
-
   @media (min-width: 700px) {
-    .product-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+    .grid_1-1 {
       align-items: start;
       margin-top: 40px;
       max-width: 1050px;
