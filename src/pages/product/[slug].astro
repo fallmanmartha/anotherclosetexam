@@ -1,0 +1,132 @@
+---
+type Product = {
+  title: string;
+  size: string;
+  brand: string;
+  location: string;
+  image: string;
+  description: string;
+  slug: string;
+  wash: string;
+  condition: string;
+  fit: string;
+};
+
+import "./css/general.css";
+
+export async function getStaticPaths() {
+  const res = await fetch("https://uxyaqezkinnmddpsjcht.supabase.co/rest/v1/products", {
+    headers: {
+      apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eWFxZXpraW5ubWRkcHNqY2h0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0ODMzNDcsImV4cCI6MjA2OTA1OTM0N30.3wwIHSsmdQwUlfCtnIZkJQfoqXJBP4M-NDLDpmaVusI",
+      Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eWFxZXpraW5ubWRkcHNqY2h0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0ODMzNDcsImV4cCI6MjA2OTA1OTM0N30.3wwIHSsmdQwUlfCtnIZkJQfoqXJBP4M-NDLDpmaVusI",
+    },
+  });
+
+  const data: Product[] = await res.json();
+
+  if (!Array.isArray(data)) {
+    throw new Error("Expected array from Supabase, got something else.");
+  }
+
+  return data.map((product) => ({
+    params: { slug: product.slug },
+    props: { myData: product },
+  }));
+}
+
+const { myData }: { myData: Product } = Astro.props;
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+  <section>
+    <div class="product-grid">
+      <!-- Bildsida -->
+      <div>
+        <a href="/location" class="backlink">←</a>
+
+        <img src={myData.image} alt={myData.title} class="image" />
+      </div>
+
+      <!-- Infosida -->
+      <div class="info">
+        <h1 class="title">{myData.title}</h1>
+        <a href="/location"><p class="location">{myData.location}</p></a>
+
+        <p class="description">{myData.description}</p>
+
+        <p><strong>Stand</strong><br />{myData.condition}</p>
+        <p><strong>Vask</strong><br />{myData.wash}</p>
+        <p><strong>Fit</strong><br />{myData.fit}</p>
+        <p><strong>Størrelse</strong><br />{myData.size}</p>
+        <p><strong>Varumærke</strong><br />{myData.brand}</p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  section {
+    margin: 40px 20px 40px 20px;
+  }
+  .backlink {
+    text-decoration: none;
+    font-size: 40px;
+    display: inline-block;
+    margin-top: 1rem;
+  }
+
+  .image {
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .info {
+    max-width: 500px;
+    margin-top: 35px;
+  }
+
+  .title {
+    font-size: 40px;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+  }
+
+  .location {
+    background: #e3e3e3;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-bottom: 1.5rem;
+    font-size: 20px;
+    margin-top: 20px;
+    font-style: normal;
+  }
+
+  .location:hover {
+    text-decoration: underline;
+  }
+
+  .description {
+    line-height: 1.5;
+    margin-bottom: 2.5rem;
+    max-width: 40ch;
+    margin-top: -13px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 700px) {
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-top: 40px;
+      max-width: 1050px;
+      margin: 0 auto; /* centrera hela grid-blocket */
+    }
+  }
+</style>
