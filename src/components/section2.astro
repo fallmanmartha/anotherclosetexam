@@ -1,0 +1,49 @@
+---
+import "./css/general.css";
+import Cta2 from "./cta2.astro";
+import Cta1 from "./cta1.astro";
+---
+
+<section class="sectioncolor">
+  <div class="info">
+    <h2>Find dit lokale tøjfællesskab</h2>
+    <h5>Vælg en lokation og se, hvad du kan låne nær dig</h5>
+    <div>
+      <Cta2 text="Fredricia" />
+      <Cta2 text="KEA" />
+      <Cta2 text="Lyngby" />
+      <Cta2 text="Nørrebro" />
+      <Cta2 text="Ribe" />
+      <Cta2 text="Roskilde" />
+      <Cta2 text="Østerbro" />
+    </div>
+
+    <h3>Er din by ikke med?</h3>
+    <p>Vi åbner løbende nye tøjfællesskaber, så flere kvinder kan dele i stedet for at købe nyt. Tilmeld ventelisten og få besked, når vi åbner tæt på dig eller hør, hvordan du starter dit eget tøjfællesskab.</p>
+
+    <div>
+      <Cta1 text="Tilmeld dig till venteliste" />
+      <Cta1 text="Start dit eget fællesskab" />
+    </div>
+  </div>
+</section>
+<style>
+  section {
+    background-color: #f6f6f6;
+    padding: 70px 0 70px 0;
+  }
+  h5 {
+    margin-top: -35px;
+  }
+
+  h3 {
+    margin-top: 50px;
+  }
+  p {
+    max-width: 90ch;
+    margin-top: -20px;
+  }
+  .info {
+    margin-left: 5vw;
+  }
+</style>

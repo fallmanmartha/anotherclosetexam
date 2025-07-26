@@ -1,5 +1,6 @@
 :root {
   --color-primary: #0c3226;
+  --color-secondary: #f6f6f6;
   --font-primary: Arial, sans-serif;
 }
 
@@ -36,6 +37,40 @@ h2 {
   font-size: 50px;
 }
 
-main {
+h5 {
+  font-size: 25px;
+  font-style: normal;
+}
+
+h3 {
+  font-size: 35px;
+}
+
+.grid_1-1 {
+  grid-template-columns: 1fr;
+}
+
+.sectioncolor {
+  background-color: var(--color-secondary);
+  padding: 70px 0 70px 0;
+}
+
+.margin {
   margin-left: 5vw;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media (min-width: 700px) {
+  .grid_1-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-top: 40px;
+    max-width: 1050px;
+    margin: 0 auto; /* centrera hela grid-blocket */
+  }
 }
