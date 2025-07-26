@@ -1,0 +1,28 @@
+<div class="banner">
+  <p class="scrolling-text">Bliv ambassadør. Lån +1 stykke tøj hver måned - Bliv ambassadør. Lån +1 stykke tøj hver måned - Bliv ambassadør. Lån +1 stykke tøj hver måned</p>
+</div>
+
+<style>
+  .scrolling-text {
+    white-space: nowrap;
+    display: inline-block;
+    animation: scroll-left 20s linear infinite;
+    font-size: 20px;
+    font-style: italic;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .banner {
+    overflow: hidden;
+    border: 2px solid #0c3226;
+    margin-left: -200px;
+  }
+</style>
