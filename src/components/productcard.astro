@@ -1,0 +1,64 @@
+---
+const { data } = Astro.props;
+---
+
+<a href={`/product/${data.slug}`} class="productlink">
+  <div class="productcard">
+    <img src={data.image} alt={data.title} class="productimg" />
+    <h3 class="producttitle"><em>{data.title}</em></h3>
+    <div class="infobox">
+      <p class="productinfo"><strong>{data.size}</strong>, {data.brand}</p>
+      <span class="productlocation">{data.location}</span>
+    </div>
+  </div>
+</a>
+
+<style>
+  .productlink {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+    display: block;
+  }
+
+  .productlink:hover {
+    transform: translateY(-2px);
+  }
+
+  .productcard {
+    max-width: 315px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .productcard:hover {
+  }
+
+  .productimg {
+    width: 290px;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+
+  .producttitle {
+    font-size: 24px;
+    margin: 10px 0px 5px;
+  }
+
+  .infobox {
+    padding: 0 0px 15px;
+  }
+
+  .productinfo {
+    margin: 5px 0;
+  }
+
+  .productlocation {
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 0px 8px;
+    display: inline-block;
+    background-color: #e3e3e3;
+  }
+</style>
