@@ -30,7 +30,7 @@ const products: Product[] = await response.json();
 </div>
 <style>
   .cardsection {
-    margin-top: 70px;
+    margin-top: 0px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 5px;
@@ -38,6 +38,11 @@ const products: Product[] = await response.json();
   h2 {
     margin-top: 0px;
   }
+
+  .sectioncolor {
+    padding-top: 70px;
+  }
+
   @media (min-width: 768px) {
     .cardsection {
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
