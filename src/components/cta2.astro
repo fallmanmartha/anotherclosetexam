@@ -8,7 +8,7 @@ const { text } = Astro.props;
 <style>
   .cta {
     display: inline-block;
-    width: 250px;
+    width: 170px;
     text-align: center;
     background-color: white;
     color: black;
@@ -26,5 +26,11 @@ const { text } = Astro.props;
     background-color: #08362a; /* mörkgrön */
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (min-width: 768px) {
+    .cta {
+      width: 250px;
+    }
   }
 </style>
