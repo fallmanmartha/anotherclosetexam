@@ -12,7 +12,10 @@ type Product = {
   fit: string;
 };
 
-import "./css/general.css";
+import "/css/general.css";
+import Productcard from "../../components/productcard.astro";
+import Layout from "../../layouts/Layout.astro";
+import Banner from "../../components/banner.astro";
 
 export async function getStaticPaths() {
   const res = await fetch("https://uxyaqezkinnmddpsjcht.supabase.co/rest/v1/products", {
@@ -24,28 +27,34 @@ export async function getStaticPaths() {
 
   const data: Product[] = await res.json();
 
-  if (!Array.isArray(data)) {
-    throw new Error("Expected array from Supabase, got something else.");
-  }
-
   return data.map((product) => ({
     params: { slug: product.slug },
     props: { myData: product },
   }));
 }
 
+// Vi hämtar props från getStaticPaths ovan
 const { myData }: { myData: Product } = Astro.props;
-import Layout from "../../layouts/Layout.astro";
-import Banner from "../../components/banner.astro";
+
+// Hämta alla produkter igen för att filtrera fram relaterade
+const allRes = await fetch("https://uxyaqezkinnmddpsjcht.supabase.co/rest/v1/products", {
+  headers: {
+    apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eWFxZXpraW5ubWRkcHNqY2h0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0ODMzNDcsImV4cCI6MjA2OTA1OTM0N30.3wwIHSsmdQwUlfCtnIZkJQfoqXJBP4M-NDLDpmaVusI",
+    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eWFxZXpraW5ubWRkcHNqY2h0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0ODMzNDcsImV4cCI6MjA2OTA1OTM0N30.3wwIHSsmdQwUlfCtnIZkJQfoqXJBP4M-NDLDpmaVusI",
+  },
+});
+
+const allProducts: Product[] = await allRes.json();
+
+const related = allProducts.filter((p) => p.size === myData.size && p.slug !== myData.slug);
 ---
 
 <Layout>
-  <section>
+  <section class="productview">
     <div class="grid_1-1">
       <!-- Bildsida -->
       <div>
         <a href="/location" class="backlink">←</a>
-
         <img src={myData.image} alt={myData.title} class="image" />
       </div>
 
@@ -53,7 +62,6 @@ import Banner from "../../components/banner.astro";
       <div class="info">
         <h1 class="title">{myData.title}</h1>
         <a href="/location"><p class="location">{myData.location}</p></a>
-
         <p class="description">{myData.description}</p>
 
         <p><strong>Stand</strong><br />{myData.condition}</p>
@@ -66,11 +74,18 @@ import Banner from "../../components/banner.astro";
   </section>
 
   <Banner />
+
+  <section class="margin">
+    <h2>Andre produkter i størrelse {myData.size}</h2>
+    <section class="cardsection">
+      {related.length > 0 ? related.map((product) => <Productcard data={product} />) : <p class="noresult">Der er ikke flere styles i denne størrelse.</p>}
+    </section>
+  </section>
 </Layout>
 
 <style>
-  section {
-    margin: 40px 20px 40px 20px;
+  .productview {
+    margin: 40px 20px 70px 20px;
   }
   .backlink {
     text-decoration: none;
@@ -115,6 +130,12 @@ import Banner from "../../components/banner.astro";
     margin-bottom: 2.5rem;
     max-width: 40ch;
     margin-top: -13px;
+  }
+
+  .noresult {
+    font-style: italic;
+    margin-top: 2rem;
+    font-size: 1rem;
   }
 
   @media (min-width: 700px) {
