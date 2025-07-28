@@ -1,4 +1,5 @@
 ---
+import Footer from "../components/footer.astro";
 import Nav from "../components/nav.astro";
 ---
 
@@ -12,8 +13,13 @@ import Nav from "../components/nav.astro";
     <title>Astro Basics</title>
   </head>
   <body>
-    <Nav />
+    <header>
+      <Nav />
+    </header>
     <slot />
+    <footer>
+      <Footer />
+    </footer>
   </body>
 </html>
 
