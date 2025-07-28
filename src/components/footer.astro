@@ -1,8 +1,11 @@
 ---
 import "./css/general.css";
+import Banner from "./banner.astro";
 ---
 
 <section class="sectionbackground">
+  <Banner />
+
   <footer class="footer">
     <div class="newsletter">
       <h3><em>Tilmeld dig vores nyhedsbrev:</em></h3>
@@ -57,6 +60,10 @@ import "./css/general.css";
 </section>
 
 <style>
+  .sectionbackground {
+    margin-top: 90px;
+  }
+
   .footer {
     background-color: #f8f8f8;
     display: grid;
@@ -70,6 +77,7 @@ import "./css/general.css";
     max-width: 320px;
     background-color: white;
     padding: 0px 50px 50px 50px;
+    border-radius: 5px;
   }
 
   .newsletterform {
@@ -122,7 +130,7 @@ import "./css/general.css";
   }
 
   footer {
-    margin-top: 70px;
+    margin-top: 0px;
   }
 
   p {
