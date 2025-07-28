@@ -30,14 +30,19 @@ const products: Product[] = await response.json();
 </div>
 <style>
   .cardsection {
-    margin-right: 20px;
+    margin-top: 70px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    max-width: 1250px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 5px;
   }
-
   h2 {
     margin-top: 0px;
+  }
+  @media (min-width: 768px) {
+    .cardsection {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      max-width: 1250px;
+      gap: 10px;
+    }
   }
 </style>
