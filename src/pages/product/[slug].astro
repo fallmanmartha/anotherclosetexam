@@ -5,6 +5,7 @@ type Product = {
   brand: string;
   location: string;
   image: string;
+  hoverimage?: string;
   description: string;
   slug: string;
   wash: string;
@@ -54,7 +55,10 @@ const related = allProducts.filter((p) => p.size === myData.size && p.slug !== m
       <!-- Bildsida -->
       <div>
         <a href="/location" class="backlink">←</a>
-        <img src={myData.image} alt={myData.title} class="image" />
+        <div class="hoverimage">
+          <img src={myData.image} alt={myData.title} class="productimg front" />
+          <img src={myData.hoverimage} alt={myData.title} class="productimg back" />
+        </div>
       </div>
 
       <!-- Infosida -->
@@ -96,6 +100,39 @@ const related = allProducts.filter((p) => p.size === myData.size && p.slug !== m
   .image {
     width: 100%;
     border-radius: 5px;
+  }
+
+  .hoverimage {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .productimg {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+    border-radius: 5px;
+  }
+
+  .front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 1;
+  }
+
+  .back {
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+  }
+
+  .hoverimage:hover .front {
+    opacity: 0;
   }
 
   .info {

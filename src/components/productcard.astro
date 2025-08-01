@@ -4,7 +4,10 @@ const { data } = Astro.props;
 
 <a href={`/product/${data.slug}`} class="productlink">
   <div class="productcard">
-    <img src={data.image} alt={data.title} class="productimg" />
+    <div class="hoverimage">
+      <img src={data.image} alt={data.title} class="productimg front" />
+      <img src={data.hoverimage} alt={data.title} class="productimg back" />
+    </div>
     <h3 class="producttitle"><em>{data.title}</em></h3>
     <div class="infobox">
       <p class="productinfo"><strong>{data.size}</strong>, {data.brand}</p>
@@ -14,6 +17,38 @@ const { data } = Astro.props;
 </a>
 
 <style>
+  .hoverimage {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .productimg {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+  }
+
+  .front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 1;
+  }
+
+  .back {
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+  }
+
+  .hoverimage:hover .front {
+    opacity: 0;
+  }
+
   .productlink {
     text-decoration: none;
     color: inherit;
