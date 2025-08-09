@@ -5,8 +5,8 @@ const { data } = Astro.props;
 <a href={`/product/${data.slug}`} class="productlink">
   <div class="productcard" data-size={data.size} data-type={data.type}>
     <div class="hoverimage">
-      <img src={data.image} alt={data.title} class="productimg front" />
-      <img src={data.hoverimage} alt={data.title} class="productimg back" />
+      <img src={data.image} alt={data.title} class="productimg front" loading="lazy" />
+      <img src={data.hoverimage} alt={data.title} class="productimg back" loading="lazy" />
     </div>
     <h3 class="producttitle"><em>{data.title}</em></h3>
     <div class="infobox">
