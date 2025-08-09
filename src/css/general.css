@@ -20,7 +20,7 @@ a {
 
 p {
   font-family: var(--font-secondary);
-  font-weight: regular;
+  font-weight: 400;
   font-size: 17px;
   letter-spacing: -0.05em;
 }
