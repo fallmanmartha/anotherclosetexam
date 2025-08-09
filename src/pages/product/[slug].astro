@@ -56,8 +56,8 @@ const related = allProducts.filter((p) => p.size === myData.size && p.slug !== m
       <div>
         <a href="/location" class="backlink">←</a>
         <div class="hoverimage">
-          <img src={myData.image} alt={myData.title} class="productimg front" />
-          <img src={myData.hoverimage} alt={myData.title} class="productimg back" />
+          <img src={myData.image} alt={myData.title} class="productimg front" loading="lazy" />
+          <img src={myData.hoverimage} alt={myData.title} class="productimg back" loading="lazy" />
         </div>
       </div>
 
