@@ -2,6 +2,7 @@
   --color-primary: #0c3226;
   --color-secondary: #f6f6f6;
   --font-primary: Arial, sans-serif;
+  --font-secondary: "Helvetica Neue", Helvetica, sans-serif;
 }
 
 h1,
@@ -18,9 +19,10 @@ a {
 }
 
 p {
-  font-family: var(--font-primary);
-  font-weight: regular;
+  font-family: var(--font-secondary);
+  font-weight: 400;
   font-size: 17px;
+  letter-spacing: -0.05em;
 }
 body {
   max-width: 1512px;
